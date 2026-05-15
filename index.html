@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Site profissional de Eduardo Afonso, estudante de Gestão de Serviços de Saúde, com experiência em qualidade, indicadores, BI, custos e gestão em saúde." />
+  <title>Eduardo Afonso | Gestão de Serviços de Saúde</title>
+
+  <style>
+    :root {
+      --primary: #0f172a;
+      --secondary: #1e3a8a;
+      --accent: #2563eb;
+      --light: #f8fafc;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --white: #ffffff;
+      --success: #0f766e;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--light);
+      color: var(--primary);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: 0 auto;
+    }
+
+    header {
+      background: rgba(15, 23, 42, 0.96);
+      color: var(--white);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.18);
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+      gap: 24px;
+    }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      font-size: 1.1rem;
+    }
+
+    nav {
+      display: flex;
+      gap: 18px;
+      font-size: 0.94rem;
+    }
+
+    nav a {
+      color: #e2e8f0;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover {
+      color: #93c5fd;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 58%, #2563eb 100%);
+      color: var(--white);
+      padding: 72px 0 58px;
+    }
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 42px;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 4.2rem);
+      line-height: 1.05;
+      margin-bottom: 16px;
+    }
+
+    .hero h2 {
+      font-size: clamp(1.05rem, 2vw, 1.45rem);
+      color: #dbeafe;
+      font-weight: 500;
+      margin-bottom: 22px;
+    }
+
+    .hero p {
+      color: #e0f2fe;
+      max-width: 720px;
+      margin-bottom: 28px;
+      font-size: 1.03rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 22px rgba(15, 23, 42, 0.18);
+    }
+
+    .btn-primary {
+      background: var(--white);
+      color: var(--secondary);
+    }
+
+    .btn-outline {
+      border-color: rgba(255,255,255,0.55);
+      color: var(--white);
+    }
+
+    .profile-card {
+      background: rgba(255,255,255,0.11);
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 28px;
+      padding: 28px;
+      text-align: center;
+      box-shadow: 0 22px 50px rgba(15, 23, 42, 0.28);
+    }
+
+    .profile-photo {
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid rgba(255,255,255,0.85);
+      margin-bottom: 18px;
+      background: #cbd5e1;
+    }
+
+    .profile-note {
+      font-size: 0.92rem;
+      color: #dbeafe;
+      margin-top: 12px;
+    }
+
+    main section {
+      padding: 58px 0;
+    }
+
+    .section-title {
+      margin-bottom: 28px;
+    }
+
+    .section-title span {
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-size: 0.82rem;
+    }
+
+    .section-title h2 {
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      margin-top: 6px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 26px;
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.06);
+    }
+
+    .card h3 {
+      margin-bottom: 12px;
+      color: var(--secondary);
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .highlights {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .highlight {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .highlight strong {
+      display: block;
+      font-size: 1.7rem;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 22px;
+    }
+
+    .job {
+      border-left: 5px solid var(--accent);
+    }
+
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: flex-start;
+      margin-bottom: 14px;
+    }
+
+    .job-title {
+      font-size: 1.2rem;
+      color: var(--secondary);
+      font-weight: 700;
+    }
+
+    .job-company {
+      font-weight: 700;
+      margin-top: 3px;
+    }
+
+    .job-date {
+      color: var(--success);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    ul {
+      padding-left: 18px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .tag {
+      background: #eff6ff;
+      color: #1d4ed8;
+      border: 1px solid #bfdbfe;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .education-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .courses-list {
+      columns: 2;
+      column-gap: 32px;
+    }
+
+    .contact {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    .contact .section-title span,
+    .contact .section-title h2 {
+      color: var(--white);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 18px;
+    }
+
+    .contact-item {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 18px;
+      padding: 20px;
+    }
+
+    .contact-item span {
+      display: block;
+      color: #bfdbfe;
+      font-size: 0.86rem;
+      margin-bottom: 6px;
+    }
+
+    footer {
+      background: #020617;
+      color: #cbd5e1;
+      text-align: center;
+      padding: 22px 0;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero-content,
+      .about-grid,
+      .education-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .highlights,
+      .skills-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .courses-list {
+        columns: 1;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .highlights,
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .job-header {
+        flex-direction: column;
+      }
+
+      .job-date {
+        white-space: normal;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container navbar">
+      <div class="brand">Eduardo Afonso</div>
+      <nav aria-label="Menu principal">
+        <a href="#sobre">Sobre</a>
+        <a href="#experiencia">Experiência</a>
+        <a href="#habilidades">Habilidades</a>
+        <a href="#formacao">Formação</a>
+        <a href="#contato">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-content">
+      <div>
+        <h1>Eduardo Afonso</h1>
+        <h2>Gestão de Serviços de Saúde | Qualidade | Indicadores | BI | Custos</h2>
+        <p>
+          Estudante de Gestão de Serviços de Saúde pela UFMG e Técnico em Redes de Computadores pelo CEFET-MG,
+          com experiência em gestão da qualidade, indicadores assistenciais, análise de dados, custos em saúde,
+          sistemas de informação e melhoria contínua de processos.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contato">Entrar em contato</a>
+          <a class="btn btn-outline" href="#experiencia">Ver experiência</a>
+        </div>
+      </div>
+
+      <aside class="profile-card" aria-label="Foto e informações profissionais">
+        <!-- Troque o valor do src abaixo pelo nome do arquivo da sua foto, por exemplo: foto-eduardo.jpg -->
+        <img class="profile-photo" src="foto-eduardo.jpg" alt="Foto profissional de Eduardo Afonso" />
+        <h3>Perfil profissional</h3>
+        <p class="profile-note">
+          Estudante de Gestão de Serviços de Saúde, com foco em qualidade, indicadores, BI, custos e gestão em saúde.
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <main>
+    <section id="sobre">
+      <div class="container">
+        <div class="section-title">
+          <span>Sobre mim</span>
+          <h2>Perfil voltado à gestão, dados e qualidade em saúde</h2>
+        </div>
+
+        <div class="about-grid">
+          <div class="card">
+            <h3>Resumo profissional</h3>
+            <p>
+              Tenho interesse em atuar na área de Gestão em Saúde, com foco em qualidade assistencial,
+              gestão de informações, análise de dados, indicadores, custos e melhoria contínua.
+              Minha trajetória combina vivência em instituições de saúde com domínio de ferramentas digitais,
+              permitindo apoiar gestores na tomada de decisão e na organização dos processos.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Áreas de interesse</h3>
+            <p>
+              Busco oportunidades em qualidade hospitalar, gestão pública em saúde, regulação,
+              indicadores assistenciais, Business Intelligence, gestão de custos, segurança do paciente,
+              auditorias internas, acreditação e conformidade institucional.
+            </p>
+          </div>
+        </div>
+
+        <div class="highlights">
+          <div class="highlight">
+            <strong>2+</strong>
+            <span>anos de experiência prática</span>
+          </div>
+          <div class="highlight">
+            <strong>BI</strong>
+            <span>dashboards e indicadores</span>
+          </div>
+          <div class="highlight">
+            <strong>UFMG</strong>
+            <span>Gestão de Serviços de Saúde</span>
+          </div>
+          <div class="highlight">
+            <strong>SUS</strong>
+            <span>gestão e políticas públicas</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experiencia">
+      <div class="container">
+        <div class="section-title">
+          <span>Experiência</span>
+          <h2>Vivência profissional</h2>
+        </div>
+
+        <div class="timeline">
+          <article class="card job">
+            <div class="job-header">
+              <div>
+                <div class="job-title">Estagiário de Qualidade — Gerência de Qualidade</div>
+                <div class="job-company">Hospital Mater Dei — Unidade Santo Agostinho</div>
+              </div>
+              <div class="job-date">2025 — 2026 | 1 ano e 1 mês</div>
+            </div>
+            <ul>
+              <li>Atuação na atualização, manutenção e análise de dados no sistema de gestão da qualidade Interact.</li>
+              <li>Parametrização de indicadores e KPIs de diferentes setores, alinhando dados às metas institucionais.</li>
+              <li>Controle de informações documentadas, revisão de documentos e apoio à gestão da qualidade.</li>
+              <li>Monitoramento de relatórios de não conformidade, tratativas, prazos, responsáveis e ações corretivas.</li>
+              <li>Participação em auditorias internas, com foco em melhoria dos processos e segurança assistencial.</li>
+              <li>Aplicação de ferramentas da qualidade, como PDCA, Ishikawa e 5 Porquês.</li>
+              <li>Desenvolvimento de dashboards no Looker Studio para acompanhamento de indicadores, pendências e não conformidades.</li>
+            </ul>
+          </article>
+
+          <article class="card job">
+            <div class="job-header">
+              <div>
+                <div class="job-title">Estagiário de Gestão de Informações e Custos</div>
+                <div class="job-company">IPSEMG — Instituto de Previdência dos Servidores do Estado de Minas Gerais</div>
+              </div>
+              <div class="job-date">2023 — 2025</div>
+            </div>
+            <ul>
+              <li>Geração de dados abertos por meio de scripts em R e publicação no Portal da Transparência MG.</li>
+              <li>Automatização de rotinas de captura, tratamento e carga de dados com Python, PostgreSQL e Crontab.</li>
+              <li>Elaboração de relatórios em BI com foco em qualidade assistencial e apoio à alta gestão.</li>
+              <li>Criação de painéis com indicadores como mortalidade geral, reinternação e permanência hospitalar.</li>
+              <li>Apoio em análises utilizando metodologia DRG e comparação de metas institucionais.</li>
+              <li>Levantamento de custos com base no custeio por absorção para setores como Radiologia e Laboratório.</li>
+              <li>Padronização de centros de custos e apoio à integração de informações para novo sistema de custos.</li>
+              <li>Automatização da geração de bases com Power Automate.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="habilidades">
+      <div class="container">
+        <div class="section-title">
+          <span>Competências</span>
+          <h2>Habilidades técnicas e comportamentais</h2>
+        </div>
+
+        <div class="skills-grid">
+          <div class="card">
+            <h3>Qualidade em saúde</h3>
+            <ul>
+              <li>Gestão da qualidade hospitalar</li>
+              <li>Auditorias internas</li>
+              <li>Não conformidades e ações corretivas</li>
+              <li>Gestão documental</li>
+              <li>Segurança do paciente</li>
+              <li>PDCA, Ishikawa e 5 Porquês</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Dados, BI e indicadores</h3>
+            <ul>
+              <li>Excel avançado</li>
+              <li>Power BI e Looker Studio</li>
+              <li>Dashboards gerenciais</li>
+              <li>ETL e automação de rotinas</li>
+              <li>SQL, Python, PostgreSQL e Oracle</li>
+              <li>DRG e indicadores assistenciais</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Gestão pública e custos</h3>
+            <ul>
+              <li>SISAB, SINASC, SINAN, SIM, SIH e TABNET/DATASUS</li>
+              <li>Custeio por absorção, variável, RKW e ABC</li>
+              <li>Planejamento estratégico</li>
+              <li>Planos de ação</li>
+              <li>Normativas da ANS</li>
+              <li>Legislação aplicada ao SUS e contratos públicos</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tags" aria-label="Palavras-chave profissionais">
+          <span class="tag">Gestão da Qualidade</span>
+          <span class="tag">Indicadores</span>
+          <span class="tag">BI</span>
+          <span class="tag">Custos em Saúde</span>
+          <span class="tag">SUS</span>
+          <span class="tag">Lei 8.080/1990</span>
+          <span class="tag">CF/88 arts. 196 a 200</span>
+          <span class="tag">Lei 14.133/2021</span>
+          <span class="tag">Auditoria Interna</span>
+          <span class="tag">Segurança do Paciente</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="formacao">
+      <div class="container">
+        <div class="section-title">
+          <span>Formação</span>
+          <h2>Formação acadêmica e complementar</h2>
+        </div>
+
+        <div class="education-grid">
+          <div class="card">
+            <h3>Formação acadêmica</h3>
+            <p><strong>Universidade Federal de Minas Gerais — UFMG</strong></p>
+            <p class="muted">Gestão de Serviços de Saúde | 2022 — 2026 | 9º período</p>
+            <br />
+            <p><strong>Centro Federal de Educação Tecnológica de Minas Gerais — CEFET-MG</strong></p>
+            <p class="muted">Técnico em Redes de Computadores | 2017 — 2019</p>
+          </div>
+
+          <div class="card">
+            <h3>Formação complementar</h3>
+            <ul class="courses-list">
+              <li>ENAP — Regulação de Sistemas de Saúde do SUS</li>
+              <li>ENAP — Introdução à Política de Saúde</li>
+              <li>ENAP — Nova Lei de Licitações e Contratos — Lei nº 14.133/2021</li>
+              <li>Udemy — Pacote Office e Power BI</li>
+              <li>Udemy — Banco de Dados Oracle</li>
+              <li>Desenvolvimento de sistema em Java</li>
+              <li>TCC técnico: Avaliação de Desempenho de Servidor Web com JMeter</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contato">
+      <div class="container">
+        <div class="section-title">
+          <span>Contato</span>
+          <h2>Vamos conversar?</h2>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-item">
+            <span>Telefone</span>
+            <strong><a href="tel:+5537991521379">(37) 99152-1379</a></strong>
+          </div>
+          <div class="contact-item">
+            <span>E-mail</span>
+            <strong><a href="mailto:eduardoafonso1234567@gmail.com">eduardoafonso1234567@gmail.com</a></strong>
+          </div>
+          <div class="contact-item">
+            <span>LinkedIn</span>
+            <strong><a href="https://www.linkedin.com/in/eduardo-afonso-614b8820a" target="_blank" rel="noopener noreferrer">linkedin.com/in/eduardo-afonso-614b8820a</a></strong>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Eduardo Afonso. Site profissional desenvolvido para apresentação de currículo e trajetória acadêmica.</p>
+    </div>
+  </footer>
+</body>
+</html>
